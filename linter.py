@@ -10,6 +10,8 @@
 
 """This module exports the Tslint plugin class."""
 
+import os
+
 from SublimeLinter.lint import NodeLinter, util
 
 
@@ -38,7 +40,14 @@ class Tslint(NodeLinter):
 
         out = super().build_args(settings)
 
+        projectPath = self.__findTSConfigPath()
+        if projectPath is not None:
+            out.extend(['--project', projectPath, '--type-check'])
+
         # Reset the value of config_file so that this can apply per-project.
         self.config_file = backup
 
         return out
+
+    def __findTSConfigPath(self):
+        return util.find_file(os.path.dirname(self.filename), 'tsconfig.json')
