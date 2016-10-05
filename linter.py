@@ -27,7 +27,7 @@ class Tslint(NodeLinter):
     config_file = ('--config', 'tslint.json', '~')
     tempfile_suffix = {'typescript': 'ts', 'typescriptreact': 'tsx'}
     version_args = '--version'
-    version_requirement = '>= 0.4.0'
+    version_requirement = '>= 3.14.0'
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
 
     def build_args(self, settings=None):
