@@ -27,7 +27,8 @@ class Tslint(NodeLinter):
     )
     error_stream = util.STREAM_BOTH
     config_file = ('--config', 'tslint.json', '~')
-    tempfile_suffix = {'typescript': 'ts', 'typescriptreact': 'tsx'}
+    # tempfile_suffix = {'typescript': 'ts', 'typescriptreact': 'tsx'}
+    tempfile_suffix = '-'
     version_args = '--version'
     version_requirement = '>= 3.14.0'
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
