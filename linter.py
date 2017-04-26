@@ -41,9 +41,10 @@ class Tslint(NodeLinter):
 
         out = super().build_args(settings)
 
-        projectPath = self.__findTSConfigPath()
-        if projectPath is not None:
-            out.extend(['--project', projectPath, '--type-check'])
+        if '--type-check' in out:
+            projectPath = self.__findTSConfigPath()
+            if projectPath is not None:
+                out.extend(['--project', projectPath])
 
         # Reset the value of config_file so that this can apply per-project.
         self.config_file = backup
